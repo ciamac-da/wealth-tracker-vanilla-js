@@ -22,8 +22,29 @@ getRandomUser()
 getRandomUser()
 getRandomUser()
 
-
 // Add new obj to data arr
 const addData = (obj) => {
 data.push(obj)
+updateDOM()
 }
+
+// Update DOM
+const updateDOM = (provideData = data) => {
+// Clear main DIV
+main.innerHTML = "<h2><strong>Person</strong> Wealth</h2>"
+
+provideData.forEach(item => {
+const element = document.createElement("div")
+element.classList.add("person")
+element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(item.money)}`
+main.appendChild(element)
+})
+}
+
+// Format number to currency string
+const formatMoney = (number) => {
+return  "$"+ number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+// Add User Event
+addUserBtn.addEventListener("click", getRandomUser)
