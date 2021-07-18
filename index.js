@@ -31,6 +31,14 @@ const doubleMoney = () => {
   updateDOM()
 }
 
+// Sort by richest
+const sortByRichest = () => {
+  data.sort((a,b) => {
+    return b.money - a.money
+  })
+  updateDOM()
+}
+
 
 // Add new obj to data arr
 const addData = (obj) => {
@@ -59,3 +67,4 @@ return  "$"+ number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 // Add User Event
 addUserBtn.addEventListener("click", getRandomUser)
 doubleBtn.addEventListener("click", doubleMoney)
+sortBtn.addEventListener("click", sortByRichest)
